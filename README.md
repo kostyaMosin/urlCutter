@@ -1,5 +1,5 @@
-urlShortener
--------
+urlCutter
+---------
 
 A Django URL Shortener based on python [urlCutter](https://github.com/kostyaMosin/urlCutter).
 
