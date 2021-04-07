@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <link href="{% static 'cutter/css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <div id="logo">
+        <a class="logo" href="{% url 'form' %}">Short URL</a>
+    </div>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer>
+    <div id="footerbox">
+    </div>
+</footer>
+</body>
+</html>

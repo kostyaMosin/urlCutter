@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Short URL {% endblock %}
+
+{% block content %}
+<section id="urlbox">
+    <h1>Paste the URL to be shortened</h1>
+    <form method="post" action="">{% csrf_token %}
+        <div id="formurl">
+            <input type="url" name="url" placeholder="Enter the link here">
+            <div id="formbutton">
+                <input type="submit" value="Shorten URL">
+            </div>
+        </div>
+        <div id="formslug">
+            <input type="text" name="custom_slug" placeholder="Enter the custom slug">
+        </div>
+        {{ errors }}
+    </form>
+    <p class="boxtextcenter">
+    <h2><a href="{% url 'urls' %}">Your Short URL list</a></h2>
+    <br>
+    Use our URL Shortener to create a shortened link making it easy to remember
+    </p>
+</section>
+{% endblock %}
