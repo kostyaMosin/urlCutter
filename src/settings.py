@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cutter',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
