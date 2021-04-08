@@ -15,12 +15,15 @@
         <div id="formslug">
             <input type="text" name="custom_slug" placeholder="Enter the custom slug">
         </div>
-        {{ errors }}
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+        <p class="boxtextcenter" style="color: red">{{ field }}: {{ error }}</p>
+            {% endfor %}
+        {% endfor %}
     </form>
+    <h2 class="boxtextcenter"><a href="{% url 'urls' %}">Your Short URL list</a></h2><br>
     <p class="boxtextcenter">
-    <h2><a href="{% url 'urls' %}">Your Short URL list</a></h2>
-    <br>
-    Use our URL Shortener to create a shortened link making it easy to remember
+        Use our URL Shortener to create a shortened link making it easy to remember
     </p>
 </section>
 {% endblock %}
