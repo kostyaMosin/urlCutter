@@ -6,7 +6,7 @@
 <section id="content">
     {% for url in data %}
     <div>
-        <h3>CREATED AT: {{ url.created_at }} Total clicks: {{ url.clicks.count }}</h3>
+        <h15>CREATED AT: {{ url.created_at }} Total clicks: {{ url.clicks.count }}</h15>
         <h2>{{ url.url }}</h2>
         <p>
             <a href="{% url 'redirect' url.slug %}">{{ host }}{{ url.slug }}</a>

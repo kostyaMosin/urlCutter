@@ -7,14 +7,12 @@
     <h1>Paste the URL to be shortened</h1>
     <form method="post" action="">{% csrf_token %}
         <div id="formurl">
-            <input type="url" name="url" placeholder="Enter the link here">
+            <input type="text" name="url" placeholder="Enter the link here">
             <div id="formbutton">
                 <input type="submit" value="Shorten URL">
             </div>
         </div>
-        <div id="formslug">
-            <input type="text" name="custom_slug" placeholder="Enter the custom slug">
-        </div>
+        <input style="margin-top: 5px" type="text" name="custom_slug" placeholder="Enter the custom slug">
         {% for field, errors in form.errors.items %}
             {% for error in errors %}
         <p class="boxtextcenter" style="color: red">{{ field }}: {{ error }}</p>
