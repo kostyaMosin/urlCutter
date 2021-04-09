@@ -16,7 +16,7 @@ def view_form(request):
             if custom_slug := cd.get('custom_slug'):
                 data['slug'] = custom_slug
             short_url = ShortUrl.objects.create(**data)
-            return render(request, 'success.html', {'short_url': short_url})
+            return render(request, 'success.html', {'short_url': short_url, 'host': 'http://127.0.0.1:8000/'})
         else:
             return render(request, 'index.html', {'form': form, 'errors': form.errors})
 
@@ -31,7 +31,7 @@ def view_redirect_add_click(request, slug):
 def view_short_urls_list(request):
     if request.method == 'GET':
         data = ShortUrl.objects.filter().order_by('-created_at')
-        paginator = Paginator(data, 3)
+        paginator = Paginator(data, 4)
         page = request.GET.get('page')
 
         try:
