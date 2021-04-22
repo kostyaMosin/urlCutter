@@ -5,16 +5,16 @@ from cutter.slug import generate_slug
 
 
 class UrlSubmitForm(forms.Form):
-    url = forms.URLField(label='Url to be cut')
+    url = forms.URLField(label='Url to be cut', required=False)
     custom_slug = forms.CharField(label='Custom slug', max_length=15, required=False)
 
     def clean_url(self):
         url = self.cleaned_data['url']
         if not url:
-            return
+            raise forms.ValidationError(f'This field is empty')
 
         if ShortUrl.objects.filter(url=url).exists():
-            raise forms.ValidationError(f'{url} is already taken')
+            raise forms.ValidationError(f'This url is already taken')
         return url
 
     def clean_custom_slug(self):
@@ -25,7 +25,7 @@ class UrlSubmitForm(forms.Form):
 
         try:
             if ShortUrl.objects.filter(slug=custom_slug).exists():
-                raise forms.ValidationError(f'{custom_slug} is already taken')
+                raise forms.ValidationError(f'This slug is already taken')
         except OverflowError:
             raise forms.ValidationError('Custom slug is too long')
         return custom_slug
