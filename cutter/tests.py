@@ -56,7 +56,7 @@ class ViewTestCase(TestCase):
         response = self.client.post('/', {'url': url, 'custom_slug': custom_slug})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
-        self.assertFormError(response, 'form', 'custom_slug', f'{custom_slug} is already taken')
+        self.assertFormError(response, 'form', 'custom_slug', 'This slug is already taken')
         self.assertNotIn('short_url', response.context)
 
     def test_view_form_post_with_url_not_unique(self):
@@ -77,7 +77,7 @@ class ViewTestCase(TestCase):
         response = self.client.post('/', {'url': url, 'custom_slug': custom_slug})
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
-        self.assertFormError(response, 'form', 'url', f'{url} is already taken')
+        self.assertFormError(response, 'form', 'url', 'This url is already taken')
         self.assertNotIn('short_url', response.context)
 
     def test_view_form_post_with_custom_slug_long(self):
