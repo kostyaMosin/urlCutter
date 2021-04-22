@@ -10,7 +10,7 @@
     <div class="boxtextcenter">
         <h2>{{ short_url.url }}</h2>
         <p class="boxtextcenter">
-            <a href="{% url 'redirect' short_url.slug %}">{{ host }}{{ short_url.slug }}</a>
+            <a href="{% url 'redirect' short_url.slug %}">{{ request.build_absolute_uri }}{{ short_url.slug }}</a>
         </p>
     </div>
 </section>
